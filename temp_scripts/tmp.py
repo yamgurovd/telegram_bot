@@ -19,14 +19,14 @@ while True:
     if updates['result']:
         for result in updates['result']:
             print("====================== ЛОГИ ===================")
-
+            print("Медоl GET/sendMessage")
             print(f"Время оправки сообщения {time.ctime()}")
 
             offset = result['update_id']
-            print(f"id сообщения: {offset}")
+            print(f"message_id: {offset}")
 
             chat_id = result['message']['from']['id']
-            print(f"id пользователя: {chat_id}")
+            print(f"chat_id: {chat_id}")
 
             first_name = result['message']['from']['first_name']
             print(f"first_name: {first_name}")
