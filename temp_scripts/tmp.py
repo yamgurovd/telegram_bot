@@ -37,8 +37,6 @@ while True:
             username = result.get('message').get('from').get('username', 'There is no username')
             print(f"username: {username}")
 
-
-
             ink = "═══════❖═══════"
 
             text = f"Привет {first_name} {last_name} спасибо, что помогаешь в тестировании бота yamgurovd 😇"
@@ -56,8 +54,6 @@ while True:
             requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={chat_id}&text={text_3}')
 
             requests.get(f'{API_URL}{BOT_TOKEN}/sendMessage?chat_id={chat_id}&text={ink}')
-
-            print("===============================================")
 
             time.sleep(2)
             counter += 1
