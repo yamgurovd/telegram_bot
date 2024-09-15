@@ -126,6 +126,10 @@ def generate_street_address_with_county(fake: Faker = Faker("ru-RU"),
     :return: Генерирует Полный адрес страну включая + дополнительные символы(если необходимо) example - Арзамас
     """
     if is_added_symbols:
-        return fake.street_address_with_county() + ''.join(generate_symbols)
+        return fake.street() + ''.join(generate_symbols)
     else:
-        return fake.street_address_with_county()
+        return fake.ascii_free_email()
+
+
+tmp  = generate_street_address_with_county()
+print(tmp)
