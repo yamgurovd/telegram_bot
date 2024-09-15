@@ -5,6 +5,10 @@ from src.credentional import BOT_TOKEN
 from src.randomizers import randomizer_text
 from aiogram.types import ContentType
 from aiogram import F
+from ai.hendler_ai import output_
+
+API_URL = 'https://api.telegram.org/bot'
+BOT_TOKEN = '7217299582:AAFGFpvK_26l4-1Jjvopj1wg966OFKnPPfk'
 
 API_CATS_URL = 'https://api.thecatapi.com/v1/images/search'
 
@@ -17,16 +21,20 @@ dp = Dispatcher()
 async def randomizer_text_(message: Message):
     await message.answer(f"{randomizer_text.generate_text(size_text=200)}")
 
+
+@dp.message(Command(commands=["artem_moloy_babuin"]))
+async def randomizer_text_(message: Message):
+    await message.answer(output_())
+
+
 @dp.message(Command(commands=["help"]))
 async def get_help(message: Message):
-    await message.answer("список доступных команд: \n /randomizer_text_200, /cotomizer")
+    await message.answer("список доступных команд: \n /randomizer_text_200, /cotomizer, /artem_moloy_babuin")
 
 
 @dp.message()
 async def send_echo(message: Message):
-    await message.reply(text=message.text)
-
-
+    await message.reply(text="hjkhjk")
 
 
 # ...
@@ -41,7 +49,7 @@ dp.message.register(randomizer_text_, Command(commands="randomizer_text"))
 dp.message.register(get_help, Command(commands=["help"]))
 dp.message.register(send_photo_echo, F.content_type == ContentType.PHOTO)
 dp.message.register(send_echo)
-
+dp.message.register(randomizer_text_, Command(commands=["artem_moloy_babuin"]))
 
 if __name__ == '__main__':
     dp.run_polling(bot)

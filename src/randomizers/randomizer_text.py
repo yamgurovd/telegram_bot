@@ -2,9 +2,11 @@ from datetime import date
 from faker import Faker
 from typing import Any
 
+from networkx.algorithms.isomorphism.matchhelpers import tmpdoc
+
 
 def generate_text(size_text: int,
-                  fake: Faker = Faker("ru-RU"),
+                  fake: Faker = Faker("en_US"),
                   is_added_symbols: bool = False,
                   generate_symbols: Any = None) -> date | Any:
     """
