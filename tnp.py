@@ -1,11 +1,13 @@
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import Message
 from src.credentional import BOT_TOKEN
 from src.randomizers import randomizer_text, randomizer_person, randomizer_area
 from aiogram.types import ContentType
 from aiogram import F
-from ai.hendler_ai import output_
+from ai.handler_ai import output_
+from ai.handler_ai_2 import output_2
+
 
 API_URL = 'https://api.telegram.org/bot'
 BOT_TOKEN = '7217299582:AAFGFpvK_26l4-1Jjvopj1wg966OFKnPPfk'
@@ -15,12 +17,14 @@ API_CATS_URL = 'https://api.thecatapi.com/v1/images/search'
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
+
 @dp.message(Command(commands=["start"]))
 async def get_help(message: Message):
     await message.answer("Привет дорогой друг 🙌 \n"
                          "Для работы с ботом список доступных команд -  /help \n"
                          "Спасибо в тестировании бота 🙏 \n"
                          "Для обратной связи - @yamgurovd 😉")
+
 
 @dp.message(Command(commands=["help"]))
 async def get_help(message: Message):
@@ -68,9 +72,13 @@ async def send_photo_echo(message: Message):
 
 
 @dp.message()
-async def send_echo(message: Message):
-    print(output_())
-    await message.reply(text=output_())
+async def send_echo(message: types.Message):
+    user_input = message.text
+    print(user_input)
+    response = output_2(textinput=user_input)
+    print(response)
+    await message.reply(text=response)
+
 
 dp.message.register(get_help, Command(commands=["start"]))
 dp.message.register(get_help, Command(commands=["help"]))
