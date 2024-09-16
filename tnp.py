@@ -5,8 +5,8 @@ from src.credentional import BOT_TOKEN
 from src.randomizers import randomizer_text, randomizer_person, randomizer_area
 from aiogram.types import ContentType
 from aiogram import F
-from ai.handler_ai import output_
-from ai.handler_ai_2 import output_2
+from ai.handler_ai import output_1
+from ai.handler_ai import output_2
 
 
 API_URL = 'https://api.telegram.org/bot'
@@ -62,7 +62,7 @@ async def randomizer_text_(message: Message):
 
 @dp.message(Command(commands=["ML_1"]))
 async def randomizer_text_(message: Message):
-    await message.answer(output_())
+    await message.answer(output_1(randomizer_text.generate_text(size_text=200,)))
 
 
 # Этот хэндлер будет срабатывать на отправку боту фото
