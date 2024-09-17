@@ -31,7 +31,7 @@ def generate_ppk_reo_id() -> str:
 
     return ppk_reo_id
 
-
+#
 def generate_choice_list_item(lst: list[Any]) -> Any:
     """
     :param lst: Список из элментов, что нужно выбрать
