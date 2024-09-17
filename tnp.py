@@ -6,6 +6,11 @@ from ai.handler_ai_2 import output_2
 from src.helper import checker
 from googletrans import Translator, LANGUAGES
 from aiogram import types
+from aiogram.types import ContentType
+from aiogram import F
+from ai.handler_ai import output_1
+from ai.handler_ai import output_2
+
 
 translator = Translator()
 
@@ -61,6 +66,7 @@ async def random_fio_female(message: Message):
 @dp.message(Command(commands=["email"]))
 async def random_email(message: Message):
     await message.answer(f"Сгенерирован адрес: {randomizer_area.generate_street_address_with_county()}")
+
 
 
 @dp.message(Command(commands=["en_ru"]))
