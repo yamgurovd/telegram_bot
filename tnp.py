@@ -1,11 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import Message
-from src.credentional import BOT_TOKEN
 from src.randomizers import randomizer_text, randomizer_person, randomizer_area
-from aiogram.types import ContentType
-from aiogram import F
-# from ai.handler_ai import output_
 from ai.handler_ai_2 import output_2
 from src.helper import checker
 from googletrans import Translator, LANGUAGES
@@ -74,8 +70,6 @@ async def translate_to_ru(message: Message):
     await message.answer(f"Перевод текста на русский: {translated.text}")
 
 
-#
-#
 @dp.message(Command(commands=["ru_en"]))
 async def translate_to_en(message: Message):
     text = message.text
@@ -113,7 +107,6 @@ dp.message.register(random_fio_female, Command(commands="fio_female"))
 dp.message.register(random_email, Command(commands="email"))
 dp.message.register(translate_to_ru, Command(commands="en_ru"))
 dp.message.register(translate_to_en, Command(commands="ru_en"))
-# dp.message.register(send_photo_echo, F.content_type == ContentType.PHOTO)
 dp.message.register(send_echo)
 
 if __name__ == '__main__':
