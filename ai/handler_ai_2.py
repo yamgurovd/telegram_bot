@@ -100,7 +100,7 @@ def generate_text(input_text, max_length=100, temperature=1.0, tail_free_thresho
 
 
 def output_2(textinput: str, max_length: int = 60,
-             temperature: float = 0.1, tail_free_threshold: float = 0.98):
+             temperature: float = 0.1, tail_free_threshold: float = 0.985):
     output = generate_text(
         textinput + "\nPythia:",
         max_length=max_length,
