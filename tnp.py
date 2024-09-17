@@ -2,13 +2,9 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import Message
 from src.randomizers import randomizer_text, randomizer_person, randomizer_area
-from ai.handler_ai_2 import output_2
 from src.helper import checker
 from googletrans import Translator, LANGUAGES
 from aiogram import types
-from aiogram.types import ContentType
-from aiogram import F
-from ai.handler_ai import output_1
 from ai.handler_ai import output_2
 
 
