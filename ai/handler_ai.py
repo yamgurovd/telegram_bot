@@ -5,31 +5,31 @@ import numpy as np
 
 model = GPTNeoXForCausalLM.from_pretrained(
     "EleutherAI/pythia-70m-deduped",
-    revision="step3000",
-    cache_dir="./pythia-70m-deduped/step3000",
+    revision="step143000",
+    cache_dir="./pythia-70m-deduped/step143000",
 )
 
 tokenizer = AutoTokenizer.from_pretrained(
     "EleutherAI/pythia-70m-deduped",
-    revision="step3000",
-    cache_dir="./pythia-70m-deduped/step3000"
+    revision="step143000",
+    cache_dir="./pythia-70m-deduped/step143000"
 )
 
-def output_1(textinput: str):
+def output_ai(textinput: str):
     inputs = tokenizer(
-        textinput,
+        "Q: " + textinput + "\nA: ",
         return_tensors="pt"
     )
     tokens = model.generate(
         **inputs,
-        max_new_tokens=100,
+        max_new_tokens=150,
         do_sample=True,
         top_p = 0.9,
         top_k = 50,
         temperature = 1
     )
     output = tokenizer.decode(tokens[0])
-    output_ = output[len(textinput):]  # - textinput
+    output_ = output[len("Q: " + textinput):]  # - textinput
     return output_
 
 def tail_free_sampling(logits, tail_free_threshold=0.9, temperature=1.0):
