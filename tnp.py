@@ -5,7 +5,7 @@ from src.randomizers import randomizer_text, randomizer_person, randomizer_area
 from src.helper import checker
 from googletrans import Translator, LANGUAGES
 from aiogram import types
-from ai.handler_ai import output_2
+from ai.handler_ai import output_1
 
 
 translator = Translator()
@@ -85,16 +85,16 @@ async def send_echo(message: types.Message):
     is_latin = checker.contains_latin(text=user_input)
 
     if is_latin:
-        response = output_2(textinput=user_input)
+        response = output_1(textinput=user_input)
         await message.reply(text=response)
     else:
 
         translator = Translator()
 
-        text = output_2(textinput=user_input)
+        text = output_1(textinput=user_input)
         translated = translator.translate(text=text, src='ru', dest='en')
 
-        question_AI = output_2(textinput=str(translated))
+        question_AI = output_1(textinput=str(translated))
 
         translated_convert = translator.translate(text=question_AI, dest='ru')
 
