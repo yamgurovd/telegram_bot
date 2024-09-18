@@ -17,7 +17,7 @@ tokenizer = AutoTokenizer.from_pretrained(
 
 def output_ai(textinput: str):
     inputs = tokenizer(
-        "Q: " + textinput + "\nA: ",
+        textinput,
         return_tensors="pt"
     )
     tokens = model.generate(
@@ -29,7 +29,7 @@ def output_ai(textinput: str):
         temperature = 1
     )
     output = tokenizer.decode(tokens[0])
-    output_ = output[len("Q: " + textinput):]  # - textinput
+    output_ = output[len(textinput):]  # - textinput
     return output_
 
 def tail_free_sampling(logits, tail_free_threshold=0.9, temperature=1.0):
