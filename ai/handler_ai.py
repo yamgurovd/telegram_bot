@@ -22,7 +22,11 @@ def output_1(textinput: str):
     )
     tokens = model.generate(
         **inputs,
-        max_new_tokens=50
+        max_new_tokens=100,
+        do_sample=True,
+        top_p = 0.9,
+        top_k = 50,
+        temperature = 1
     )
     output = tokenizer.decode(tokens[0])
     output_ = output[len(textinput):]  # - textinput
