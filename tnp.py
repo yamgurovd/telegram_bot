@@ -85,20 +85,19 @@ async def send_echo(message: types.Message):
     is_latin = checker.contains_latin(text=user_input)
 
     if is_latin:
-        response = output_ai(textinput=user_input)
-        await message.reply(text=response)
+        response = output_ai(textinput="Q: " + user_input + "\nA: ")
+        await message.reply(text="Pythia:\n" + response)
     else:
 
         translator = Translator()
 
-        text = output_ai(textinput=user_input)
-        translated = translator.translate(text=text, src='ru', dest='en')
+        translated = translator.translate(text=user_input, src='ru', dest='en')
 
-        question_AI = output_ai(textinput=str(translated))
+        question_AI = output_ai(textinput="Q: " + translated.text + "\nA: ")
 
         translated_convert = translator.translate(text=question_AI, dest='ru')
 
-        await message.reply(text=translated_convert.text)
+        await message.reply(text="Пифия:\n" + translated_convert.text)
 
 
 dp.message.register(get_start, Command(commands=["start"]))
