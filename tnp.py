@@ -78,10 +78,14 @@ async def translate_to_en(message: Message):
     translated = translator.translate(text=text[len("/ru_en"):], src="ru", dest='en')
     await message.answer(f"Перевод текста на английский: {translated.text}")
 
+""" AI команда для общения в канале"""
 
 @dp.message()
 async def send_echo(message: types.Message):
-    user_input = message.text
+    if str(message.text).startswith("/pythia"):
+        user_input = message.text[len("/pythia"):]
+    else:
+        user_input = message.text
     is_latin = checker.contains_latin(text=user_input)
 
     if is_latin:

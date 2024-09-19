@@ -22,11 +22,12 @@ def output_ai(textinput: str):
     )
     tokens = model.generate(
         **inputs,
-        max_new_tokens=150,
         do_sample=True,
+        max_new_tokens=150,
         top_p = 0.9,
         top_k = 50,
-        temperature = 1
+        temperature = 1,
+        pad_token_id=tokenizer.eos_token_id
     )
     output = tokenizer.decode(tokens[0])
     output_ = output[len(textinput):]  # - textinput
